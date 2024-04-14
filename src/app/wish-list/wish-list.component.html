@@ -1,13 +1,12 @@
-<ul class="wish-list col-sm-6 mt-4">
-  <li class="d-flex justify-content-between" *ngFor="let wish of wishes">
-    <div class="form-check">
-      <label class="form-check-label">
-        <input class="checkbox" type="checkbox" />
-        {{ wish.text }}
-      </label>
-    </div>
-    <div>
-      <button type="button" class="btn-close"></button>
-    </div>
-  </li>
-</ul>
+<div *ngIf="wishes.length === 0; else showWishes">
+  <p>There are no wishes to display</p>
+</div>
+
+<ng-template #showWishes>
+  <ul class="wish-list col-sm-6 mt-4">
+    <wish-list-item
+    *ngFor="let wish of wishes"
+    [wish]="wish"
+    ></wish-list-item>
+  </ul>
+</ng-template>
