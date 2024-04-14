@@ -1,9 +1,5 @@
 <div class="container">
-    <add-wish-form
-        (addWish)="addWish($event)"
-    ></add-wish-form>
-    <wish-filter></wish-filter>
-    <wish-list
-        [wishes]="wishes"
-    ></wish-list>
+  <add-wish-form (addWish)="addWish($event)"></add-wish-form>
+  <wish-filter></wish-filter>
+  <wish-list [wishes]="wishes"></wish-list>
 </div>
