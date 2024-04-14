@@ -1,0 +1,8 @@
+[
+  { "text": "Coffee", "isFulfilled": true },
+  { "text": "Pizza", "isFulfilled": false },
+  { "text": "Wine", "isFulfilled": false },
+  { "text": "GTA", "isFulfilled": false },
+  { "text": "Cash", "isFulfilled": false },
+  { "text": "New bike", "isFulfilled": false }
+]

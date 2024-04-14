@@ -1,25 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WishItem } from 'src/shared/models/wishItem';
 import { EventService } from 'src/shared/services/eventService';
+import { WishService } from 'src/shared/services/WishService';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  constructor(events: EventService) {
+export class AppComponent implements OnInit {
+  wishes: WishItem[] = [];
+  filter: (item: WishItem) => boolean = () => true;
+  
+  constructor(events: EventService, private wishService: WishService) {
     events.listen('remove-wish', (wish: WishItem) => this.removeWish(wish));
     events.listen('toggle-fulfilled', (wish: WishItem) => this.toggleFulfilled(wish));
   }
 
-  wishes: WishItem[] = [
-    new WishItem('Coffee', true),
-    new WishItem('Pizza'),
-    new WishItem('Wine'),
-  ];
-
-  filter: (item: WishItem) => boolean = () => true;
+  ngOnInit(): void {
+    this.wishService.getWishes().subscribe(
+      (data: WishItem[]) => {
+        this.wishes = data;
+      },
+      (error: any) => {
+        alert(error.message);
+      }
+    )
+  }
 
   addWish(wish: WishItem): void {
     this.wishes.push(wish);
