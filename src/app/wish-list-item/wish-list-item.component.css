@@ -1,0 +1,7 @@
+.strikeout {
+  text-decoration: line-through;
+}
+
+.muted {
+  color: rgba(0,0,0,0.5);
+}

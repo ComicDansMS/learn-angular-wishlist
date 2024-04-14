@@ -7,7 +7,9 @@
 				[checked]="wish.isFulfilled"
 				(click)="toggleFulfilled()"
 			/>
-      {{ wish.text }}
+			<span [ngClass]="cssClasses">
+      	{{ wish.text }}
+			</span>
     </label>
   </div>
   <div>

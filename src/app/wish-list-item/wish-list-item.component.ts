@@ -21,4 +21,10 @@ export class WishListItemComponent {
   toggleFulfilled(): void {
     this.events.emit('toggle-fulfilled', this.wish);
   }
+
+  get cssClasses(): { [key: string]: boolean } {
+    return {
+      'strikeout muted': this.wish.isFulfilled
+    };
+  }
 }
